@@ -1,0 +1,18 @@
+useDynLib(MSinference, .registration=TRUE)
+export(compute_minimal_intervals,
+       compute_quantiles,
+       compute_quantiles_2,
+       compute_statistics,
+       construct_grid,
+       construct_weekly_grid,
+       estimate_lrv,
+       multiscale_test,
+       plot_sizer_map,
+       select_order)
+importFrom(Rcpp, evalCpp)
+importFrom(foreach, foreach, '%dopar%')
+importFrom(parallel, detectCores, makePSOCKcluster, stopCluster)
+importFrom(doParallel, registerDoParallel)
+importFrom('graphics', 'image')
+importFrom('stats', 'quantile')
+importFrom(Rdpack, reprompt)
