@@ -42,7 +42,7 @@ result <- compute_statistics(data = temperature,
                              sigma = sigmahat,
                              grid = grid,
                              deriv_order = deriv_order)
-str(result, max.level = 2, vec.len = 2)
+result$testing_result
 
 ## -----------------------------------------------------------------------------
 gset         <- result$gset_with_vals
@@ -60,8 +60,8 @@ results <- multiscale_test(data = temperature,
                            grid = grid,
                            alpha = alpha,
                            deriv_order = deriv_order,
-                           sim_runs = 10)
-str(results, max.level = 2, vec.len = 2)
+                           sim_runs = 100)
+results$testing_result
 
 ## -----------------------------------------------------------------------------
 plot(ts_start:(ts_start + t_len - 1), temperature, type = 'l',
@@ -216,7 +216,7 @@ quant
 result <- compute_statistics(data = covid, sigma = sigmahat,
                              n_ts = n, grid = grid,
                              epidem = TRUE)
-str(result, max.level = 3, vec.len = 2, list.len = 2)
+result$testing_result
 
 ## -----------------------------------------------------------------------------
 gset_with_values <- result$gset_with_values
@@ -234,8 +234,7 @@ results <- multiscale_test(data = covid, sigma = sigmahat,
                            alpha = alpha,
                            sim_runs = sim_runs,
                            epidem = TRUE)
-str(results, max.level = 3, vec.len = 2,
-    list.len = 2)
+results$testing_result
 
 ## -----------------------------------------------------------------------------
 plot(covid[, 1], ylim=c(min(covid[, 1], covid[, 2]),

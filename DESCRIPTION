@@ -1,8 +1,8 @@
 Package: MSinference
 Type: Package
 Title: Multiscale Inference for Nonparametric Time Trend(s)
-Version: 0.0.9
-Date: 2023-01-18
+Version: 0.1.0
+Date: 2023-08-07
 Authors@R: c(person("Marina", "Khismatullina", email = "khismatullina@ese.eur.nl",
   role = c("aut", "cre")),
   person("Michael", "Vogt", email = "m.vogt@uni-ulm.de", role = "aut"))
@@ -28,8 +28,8 @@ VignetteBuilder: knitr
 Depends: R (>= 2.10)
 LazyData: true
 NeedsCompilation: yes
-Packaged: 2023-01-20 10:47:15 UTC; missius
+Packaged: 2023-08-08 19:41:53 UTC; missius
 Author: Marina Khismatullina [aut, cre],
   Michael Vogt [aut]
 Repository: CRAN
-Date/Publication: 2023-01-23 07:40:05 UTC
+Date/Publication: 2023-08-08 20:20:02 UTC

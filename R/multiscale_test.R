@@ -159,7 +159,7 @@ multiscale_test <- function(data, sigma = 1, sigma_vec = 1, n_ts = 1, grid = NUL
 
     gset_with_vals$test <- test_results
 
-    return(list(quant = quant, stat = psi$stat, test_matrix = test,
+    return(list(testing_result = testing_result, quant = quant, stat = psi$stat, test_matrix = test,
                 gset_with_vals = gset_with_vals))
 
   } else {

@@ -33,7 +33,7 @@
 #'   infection of COVID-19 across countries.
 #'
 #' @docType package
-#' @name msinference-package
+#' @name MSinference-package
 #' @aliases MSinference
 #' @references 
 #' \insertRef{KhismatullinaVogt2020}{MSinference}

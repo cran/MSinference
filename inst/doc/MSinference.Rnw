@@ -4,8 +4,8 @@
 %\VignettePackage{MSinference}
 %\VignetteEngine{knitr::knitr}
 %\documentclass[a4paper]{amsart}
-%\documentclass[a4paper]{article}
-\documentclass[a4paper]{scrartcl}
+\documentclass[a4paper]{article}
+%\documentclass[a4paper]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage{natbib}
 \usepackage{url}
@@ -16,6 +16,7 @@
 \author{Marina Khismatullina \and Michael Vogt}
 
 \begin{document}
+%\SweaveOpts{concordance=TRUE}
 
 \maketitle
 
@@ -143,7 +144,7 @@ result <- compute_statistics(data = temperature,
                              sigma = sigmahat,
                              grid = grid,
                              deriv_order = deriv_order)
-str(result, max.level = 2, vec.len = 2)
+result$testing_result
 @
 We get the list with the following elements as the result:
 \begin{itemize}
@@ -179,8 +180,8 @@ results <- multiscale_test(data = temperature,
                            grid = grid,
                            alpha = alpha,
                            deriv_order = deriv_order,
-                           sim_runs = 10)
-str(results, max.level = 2, vec.len = 2)
+                           sim_runs = 100)
+results$testing_result
 @
 
 Now we are ready to present the results. First, we plot the the observed time series.
@@ -241,7 +242,7 @@ title(main = "(b) smoothed time series for different bandwidths",
       font.main = 1, line = 0.5)
 @
 
-Finally, we present the results produced by our test. Specifically, we depict in grey the set $\Pi^{+}_T$ which is the collection of time intervals $I_{(u,h)} = [u - h, u + h] \in [0, 1]$ for which our test rejects $H_0(u,h)$ and indicates an increase in the trend function. Furthermore, we depict in black the set of minimal intervals $\Pi^{+, \min}_T$ The definition of the minimal intervals and some dicsussion on the topic are given in \cite{KhismatullinaVogt2020}. The function in the package that calculates the minimal intervals is \verb|compute_minimal_intervals()|.
+Finally, we present the results produced by our test. Specifically, we depict in grey the set $\Pi^{+}_T$ which is the collection of time intervals $I_{(u,h)} = [u - h, u + h] \in [0, 1]$ for which our test rejects $H_0(u,h)$ and indicates an increase in the trend function. Furthermore, we depict in black the set of minimal intervals $\Pi^{+, \min}_T$ The definition of the minimal intervals and some discussion on the topic are given in \cite{KhismatullinaVogt2020}. The function in the package that calculates the minimal intervals is \verb|compute_minimal_intervals()|.
 
 
 According to theoretical results in \cite{KhismatullinaVogt2020}, we can make the following simultaneous confidence statement about the intervals plotted below: we can claim, with confidence of about $95\%$, that the trend function $m$ increases on each of these intervals. In particular, we can claim with this confidence that there has been some upward movement in the trend both in the period from around $1680$ to $1740$ and in the period from about $1870$ onwards. Hence, our test in particular provides evidence that there has been some warming trend in the period over approximately the last $150$ years. On the other hand, as the set $\Pi_T^-$ is empty, there is no evidence of any downward movement of the trend.
@@ -415,7 +416,7 @@ This step is done with these lines of code:
 result <- compute_statistics(data = covid, sigma = sigmahat,
                              n_ts = n, grid = grid,
                              epidem = TRUE)
-str(result, max.level = 3, vec.len = 2, list.len = 2)
+result$testing_result
 @
 As a result, we get the list with the following elements:
 \begin{itemize}
@@ -446,8 +447,7 @@ results <- multiscale_test(data = covid, sigma = sigmahat,
                            alpha = alpha,
                            sim_runs = sim_runs,
                            epidem = TRUE)
-str(results, max.level = 3, vec.len = 2,
-    list.len = 2)
+results$testing_result
 @
 
 Now we are ready to present the results. For the sake of brevity, we only show the results for the pairwise comparisons of Germany ($i = 1$) with the United Kingdom ($j = 2$). This is coded as the first comparison in \verb|ijset|. The remaining figures can be found in \cite{KhismatullinaVogt2023}.
@@ -522,9 +522,9 @@ segments(reject_set$startpoint, reject_set$values,
 @
 
 
-% \section{Long-run variance estimator}\label{sec:lrv}
-% 
-% In development.
+\section{Long-run variance estimator}\label{sec:lrv}
+
+In development.
 
 % In this section we describe the usage of the estimation procedure of the parameteres of a time series proces. The estimation procedure relies on the following simple observation: If $\{\varepsilon_t\}$ is an AR($p$) process, then the time series $\{ \Delta_q \varepsilon_t \}$ of the differences $\Delta_q \varepsilon_t = \varepsilon_t - \varepsilon_{t-q}$ is an ARMA($p,q$) process of the form
 % \begin{equation*}
@@ -562,6 +562,6 @@ segments(reject_set$startpoint, reject_set$values,
 % \section{Conclusion}\label{sec:concl}
 % In development.
 % 
-% \bibliography{bibliography}
-% \bibliographystyle{ims}
+\bibliography{bibliography}
+\bibliographystyle{ims}
 \end{document}
