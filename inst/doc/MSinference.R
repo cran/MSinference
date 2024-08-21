@@ -55,6 +55,7 @@ str(gset, max.level = 1, vec.len = 2)
 sum(gset$test == -1)
 
 ## -----------------------------------------------------------------------------
+set.seed(1)
 results <- multiscale_test(data = temperature,
                            sigma = sigmahat,
                            grid = grid,
@@ -115,29 +116,6 @@ legend(1900, 8.5, legend=c("bw = 0.01", "bw = 0.05", "bw = 0.10",
 
 title(main = "(b) smoothed time series for different bandwidths",
       font.main = 1, line = 0.5)
-
-## -----------------------------------------------------------------------------
-gset   <- results$gset_with_vals
-reject <- subset(gset, (test == 1 & u - h >= 0 & u + h <= 1),
-                 select = c(u, h))
-p_plus <- data.frame('startpoint' = (reject$u - reject$h) *
-                       t_len + ts_start,
-                     'endpoint' = (reject$u + reject$h) * t_len +
-                       ts_start, 'values' = 0)
-p_plus$values <- (1:nrow(p_plus)) / nrow(p_plus)
-p_plus_min    <- compute_minimal_intervals(p_plus)
-
-plot(NA, xlim=c(ts_start, ts_start + t_len - 1),
-     ylim = c(0, 1 + 1 / nrow(p_plus)),
-     xlab=" ", mgp=c(2, 0.5, 0), yaxt = "n", ylab = "")
-title(main = "(c) (minimal) intervals produced by the test",
-      font.main = 1, line = 0.5)
-title(xlab = "year", line = 1.7, cex.lab = 0.9)
-segments(p_plus_min$startpoint, p_plus_min$values,
-         p_plus_min$endpoint, p_plus_min$values, lwd = 2)
-segments(p_plus$startpoint, p_plus$values,
-         p_plus$endpoint, p_plus$values,
-         col = "gray")
 
 ## -----------------------------------------------------------------------------
 require(MSinference)

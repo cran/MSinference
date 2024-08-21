@@ -32,7 +32,6 @@
 #'   Khismatullina and Vogt (2023) and can be used for comparing the rates of
 #'   infection of COVID-19 across countries.
 #'
-#' @docType package
 #' @name MSinference-package
 #' @aliases MSinference
 #' @references 
